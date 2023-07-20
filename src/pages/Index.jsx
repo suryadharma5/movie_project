@@ -5,36 +5,29 @@ import Card from '../components/Card'
 import '../App.css'
 import axios from 'axios';
 
-const API_URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=53159827'
+const id = process.env.REACT_APP_BASEID
+const url = process.env.REACT_APP_BASEURL
+const key = process.env.REACT_APP_APIKEY
+const API_URL = `${url}?i=${id}&apikey=${key}`
+const API_DEFAULT = `${url}?i=${id}&apikey=${key}&s=[object%20Object]`;
 
 const Home = (props) => {
     const[movies, setMovies] = useState([]);
-    const[searchTerm, setSearchTerm] = useState('a');
-  
 
     const searchMovie = (title) => {
-      axios.get(`${API_URL}&s=${title}`)
-      .then((response)=> {
-        const data = response
-        // console.log(data.data.Search)
-        setMovies(data.data.Search)
-      }).catch((error)=>{
-        console.log(error)
-      })
-      
+      const searchParams = `${API_URL}&s=${title}`
+      axios.get(`${title.length === 0 ? API_DEFAULT : searchParams}`)
+        .then((response)=> {
+          const data = response
+          setMovies(data.data.Search)
+        }).catch((error)=>{
+          console.log(error)
+        })
     }
 
-    
-    if(props.searchTerm){
-      if(props.searchTerm.length > 2){
-        searchMovie(props.searchTerm)
-      }
-      
-    }
-    
     useEffect(()=>{
-      searchMovie({searchTerm})
-    }, [])
+      searchMovie(props.searchTerm)
+    }, [props.searchTerm])
 
     return(
         <div className="container">

@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import '../Detail.css'
 
+const url = process.env.REACT_APP_BASEURL
+const key = process.env.REACT_APP_APIKEY
+
+
 
 function DetailMovie(props) {
     var id = useParams()
     const ids = id.movieId
 
-    
-    
-    const API_URL = 'http://www.omdbapi.com/?i='+ids+'&apikey=53159827'
+    const API_URL = `${url}?i=${ids}&apikey=${key}`
     const [movie, setMovie] = useState();
-    // console.log(id)
 
     const fetchMovie = async()=>{
         const respones = await fetch(`${API_URL}`)
         const data = await respones.json()
-        console.log('a')
         console.log(data.Ratings.value)
         setMovie(data)
     }
