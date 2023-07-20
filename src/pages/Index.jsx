@@ -38,7 +38,7 @@ const Home = (props) => {
               <img src={SearchIcon} onClick={() => searchMovie(searchTerm)}></img>
             </div> */}
 
-            {/* Movies Card */}
+            
             {
               movies?.length > 0 
               ?
