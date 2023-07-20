@@ -2,7 +2,6 @@ import React from 'react'
 import '../App.css'
 
 function Navbar(props) {
-  const a = "aming"
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
