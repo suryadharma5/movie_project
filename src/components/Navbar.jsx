@@ -16,12 +16,6 @@ function Navbar(props) {
               <span className="input-group-text bi bi-search" id="addon-wrapping"></span>
               <input type="text" className="form-control" placeholder="Search Movie..." aria-label="Username" aria-describedby="addon-wrapping" name='movie' onChange={(e)=>props.searchValue(e.target.value)}/>
             </div>  
-              <li className="nav-item">
-                <a className="nav-link active text-white text-decoration-underline" aria-current="page" href="#">Home</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link text-white" href="#">Link</a>
-              </li>
             </ul>
           </div>
           </div>
