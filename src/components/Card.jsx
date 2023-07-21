@@ -1,19 +1,19 @@
 import React from 'react'
 
 function Card({movie}) {
+  const baseImgURL = process.env.REACT_APP_BASEIMGURL
   return (
     <div className='movie'>
           <div>
-            <p>{movie.Year}</p>
+            <p>{movie.release_date}</p>
           </div>
           <div>
-            <a href={`/movie/${movie.imdbID}`}>
-              <img src={movie.Poster != 'N/A' ? movie.Poster : 'https://via.placeholder.com/400'}></img>
+            <a href={`/movie/${movie.id}`}>
+              <img src={movie.poster_path != 'N/A' ? `${baseImgURL}/${movie.poster_path}` : 'https://via.placeholder.com/400'}></img>
             </a>
           </div>
           <div>
-            <span>{movie.Type}</span>
-            <h3>{movie.Title}</h3>
+            <h3>{movie.title}</h3>
           </div>
     </div>
   )
